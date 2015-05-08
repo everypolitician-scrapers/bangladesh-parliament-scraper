@@ -19,7 +19,7 @@ end
 @PREF = '/index.php/en/mps/members-of-parliament/'
 @terms = {
   '10' => "current-mp-s/list-of-10th-parliament-members-english",
-  # '9' => "former-mp-s/list-of-9th-parliament-members-english",
+  '9' => "former-mp-s/list-of-9th-parliament-members-english",
 }
 
 @terms.each do |term, pagename|
@@ -41,7 +41,6 @@ end
       source: url,
       term: term,
     }
-    # binding.pry if data[:localid][/347/]
     data[:website].prepend @BASE unless data[:website].empty?
     puts data.values.to_csv
     added += 1
