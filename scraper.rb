@@ -37,7 +37,7 @@ end
       constituency: tds[2].text.gsub(/[[:space:]]/, ' ').strip.split('-').first,
       website: tds[3].xpath('a/@href').text,
       photograph: tds[3].xpath('a/img/@src').text,
-      party: tds[1].text.gsub(/[[:space:]]/, ' ').strip,
+      party: tds[4].text.gsub(/[[:space:]]/, ' ').strip,
       source: url,
       term: term,
     }
