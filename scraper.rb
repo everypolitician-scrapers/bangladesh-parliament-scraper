@@ -6,10 +6,10 @@ require 'nokogiri'
 require 'date'
 require 'open-uri'
 
-require 'open-uri/cached'
-require 'colorize'
-require 'pry'
-require 'csv'
+# require 'open-uri/cached'
+# require 'colorize'
+# require 'pry'
+# require 'csv'
 
 def noko(url)
   Nokogiri::HTML(open(url).read) 
@@ -42,10 +42,9 @@ end
       term: term,
     }
     data[:website].prepend @BASE unless data[:website].empty?
-    puts data.values.to_csv
     added += 1
-    # ScraperWiki.save_sqlite([:name, :term], data)
+    ScraperWiki.save_sqlite([:name, :term], data)
   end
-  warn "Added #{added} for #{term}"
+  warn "Added #{added} members of Parliament #{term}"
 end
 
