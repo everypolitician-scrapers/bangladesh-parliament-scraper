@@ -41,7 +41,8 @@ end
       source: url,
       term: term,
     }
-    data[:website].prepend @BASE unless data[:website].empty?
+    data[:photograph] = URI.join(url, URI.escape(data[:photograph])).to_s unless data[:photograph].to_s.empty?
+    data[:website] = URI.join(url, URI.escape(data[:website])).to_s unless data[:website].to_s.empty?
     added += 1
     ScraperWiki.save_sqlite([:name, :term], data)
   end
