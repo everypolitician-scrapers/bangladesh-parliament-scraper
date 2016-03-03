@@ -16,13 +16,7 @@ class String
 end
 
 def noko_for(url)
-  begin
-    noko = Nokogiri::HTML(open(url).read) 
-  rescue => e
-    warn "#{url}: #{e}"
-    return 
-  end
-  return noko
+  Nokogiri::HTML(open(url).read) 
 end
 
 def scrape_term(url)
