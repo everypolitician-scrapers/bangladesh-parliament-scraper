@@ -6,8 +6,9 @@ require 'nokogiri'
 require 'date'
 require 'open-uri'
 require 'pry'
+require 'resolv-replace'
 
-require 'open-uri/cached'
+# require 'open-uri/cached'
 
 class String
   def tidy
