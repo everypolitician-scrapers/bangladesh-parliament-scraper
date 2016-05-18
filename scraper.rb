@@ -26,7 +26,7 @@ def scrape_term(url)
 
   page.xpath('//table//tr').drop(1).each do |tr|
     tds = tr.xpath('td')
-    next if tds[1].text.tidy.downcase == 'vacant'
+    next if %w(vacant -vacant- ---).include?(tds[1].text.tidy.downcase)
     data = { 
       seatid: tds[0].text.gsub(/[[:space:]]/, ' ').strip,
       id: tds[3].xpath('.//img/@src').text.split('/').last.split('.').first,
