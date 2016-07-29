@@ -7,6 +7,7 @@ require 'date'
 require 'open-uri'
 require 'pry'
 require 'resolv-replace'
+require 'scraped_page_archive/open-uri'
 
 # require 'open-uri/cached'
 
