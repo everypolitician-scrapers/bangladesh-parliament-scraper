@@ -27,9 +27,8 @@ def scrape_term(url)
   page.xpath('//table//tr').drop(1).each do |tr|
     tds = tr.xpath('td')
     next if %w(vacant -vacant- ---).include?(tds[1].text.tidy.downcase)
-    data = { 
+    data = {
       seatid: tds[0].text.gsub(/[[:space:]]/, ' ').strip,
-      id: tds[3].xpath('.//img/@src').text.split('/').last.split('.').first,
       name: tds[1].text.gsub(/[[:space:]]/, ' ').strip,
       constituency: tds[2].text.gsub(/[[:space:]]/, ' ').strip.split('-').first,
       website: tds[3].xpath('a/@href').text,
@@ -37,7 +36,8 @@ def scrape_term(url)
       party: tds[4].text.gsub(/[[:space:]]/, ' ').strip,
       term: 10,
       source: url.to_s,
-    } 
+    }
+    data[:id] = tds[3].xpath('.//img/@src').text.split('/').last.split('.').first rescue ''
     data[:photograph] = URI.join(url, URI.escape(data[:photograph])).to_s unless data[:photograph].to_s.empty?
     data[:website] = URI.join(url, URI.escape(data[:website])).to_s unless data[:website].to_s.empty?
     added += 1
