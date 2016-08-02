@@ -7,8 +7,7 @@ require 'date'
 require 'open-uri'
 require 'pry'
 require 'resolv-replace'
-require 'scraped_page_archive/open-uri'
-
+require 'scraped_page_archive'
 # require 'open-uri/cached'
 
 class String
@@ -18,7 +17,7 @@ class String
 end
 
 def noko_for(url)
-  Nokogiri::HTML(open(url).read) 
+  Nokogiri::HTML(open(url).read)
 end
 
 def scrape_term(url)
