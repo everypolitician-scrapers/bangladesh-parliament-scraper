@@ -14,6 +14,10 @@ class String
   def tidy
     self.gsub(/[[:space:]]+/, ' ').strip
   end
+
+  def tidy_non_greedy
+    self.gsub(/[[:space:]]/, ' ').strip
+  end
 end
 
 def noko_for(url)
@@ -28,12 +32,12 @@ def scrape_term(url)
     tds = tr.xpath('td')
     next if %w(vacant -vacant- ---).include?(tds[1].text.tidy.downcase)
     data = {
-      seatid: tds[0].text.gsub(/[[:space:]]/, ' ').strip,
-      name: tds[1].text.gsub(/[[:space:]]/, ' ').strip,
-      constituency: tds[2].text.gsub(/[[:space:]]/, ' ').strip.split('-').first,
+      seatid: tds[0].text.tidy_non_greedy,
+      name: tds[1].text.tidy_non_greedy,
+      constituency: tds[2].text.tidy_non_greedy.split('-').first,
       website: tds[3].xpath('a/@href').text,
       photograph: tds[3].xpath('a/img/@src').text,
-      party: tds[4].text.gsub(/[[:space:]]/, ' ').strip,
+      party: tds[4].text.tidy_non_greedy,
       term: 10,
       source: url.to_s,
     }
