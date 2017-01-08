@@ -1,0 +1,46 @@
+---
+request:
+  method: get
+  uri: http://www.parliament.gov.bd/index.php/en/mps/members-of-parliament/current-mp-s/list-of-10th-parliament-members-english
+  body:
+    encoding: US-ASCII
+    string: ''
+  headers:
+    Accept-Encoding:
+    - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+    Accept:
+    - "*/*"
+    User-Agent:
+    - Ruby
+response:
+  status:
+    code: 200
+    message: OK
+  headers:
+    Date:
+    - Sun, 08 Jan 2017 11:38:49 GMT
+    Server:
+    - Apache/2.2.15 (Red Hat)
+    X-Powered-By:
+    - PHP/5.3.3
+    Set-Cookie:
+    - 1c01e9c3d01e97cc9eb5dcce9efe40f8=9fq5mtchbul7rfh05gc8pi7n82; path=/
+    - jfcookie=deleted; expires=Sat, 09-Jan-2016 11:38:48 GMT; path=/
+    - jfcookie[lang]=en; expires=Mon, 09-Jan-2017 11:38:49 GMT; path=/
+    - lang=deleted; expires=Sat, 09-Jan-2016 11:38:48 GMT; path=/
+    P3p:
+    - CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"
+    Cache-Control:
+    - no-cache
+    Pragma:
+    - no-cache
+    Connection:
+    - close
+    Transfer-Encoding:
+    - chunked
+    Content-Type:
+    - text/html; charset=utf-8
+  body:
+    encoding: ASCII-8BIT
+  http_version: 
+recorded_at: Sun, 08 Jan 2017 11:41:12 GMT
