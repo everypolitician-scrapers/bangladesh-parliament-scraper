@@ -1,14 +1,13 @@
 #!/bin/env ruby
 # encoding: utf-8
 
-require 'scraperwiki'
 require 'nokogiri'
-require 'date'
-require 'open-uri'
 require 'pry'
-require 'resolv-replace'
-require 'scraped_page_archive'
-# require 'open-uri/cached'
+require 'scraperwiki'
+
+require 'open-uri/cached'
+OpenURI::Cache.cache_path = '.cache'
+# require 'scraped_page_archive/open-uri'
 
 class String
   def tidy
@@ -41,6 +40,7 @@ def scrape_term(url)
     data[:photograph] = URI.join(url, URI.escape(data[:photograph])).to_s unless data[:photograph].to_s.empty?
     data[:website] = URI.join(url, URI.escape(data[:website])).to_s unless data[:website].to_s.empty?
     added += 1
+    # puts data
     ScraperWiki.save_sqlite([:seatid, :name], data)
   end
   warn "Added #{added} members"
