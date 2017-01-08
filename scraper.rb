@@ -41,4 +41,5 @@ def scrape_term(url)
   warn "Added #{added} members"
 end
 
+ScraperWiki.sqliteexecute('DELETE FROM data') rescue nil
 scrape_term 'http://www.parliament.gov.bd/index.php/en/mps/members-of-parliament/current-mp-s/list-of-10th-parliament-members-english'
