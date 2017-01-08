@@ -1,5 +1,6 @@
 #!/bin/env ruby
 # encoding: utf-8
+# frozen_string_literal: true
 
 require 'nokogiri'
 require 'pry'
@@ -11,7 +12,7 @@ OpenURI::Cache.cache_path = '.cache'
 
 class String
   def tidy
-    self.gsub(/[[:space:]]+/, ' ').strip
+    gsub(/[[:space:]]+/, ' ').strip
   end
 end
 
@@ -27,21 +28,21 @@ def scrape_term(url)
     tds = tr.xpath('td')
     next if %w(vacant -vacant- ---).include?(tds[1].text.tidy.downcase)
     data = {
-      seatid: tds[0].text.tidy,
-      name: tds[1].text.tidy,
+      seatid:       tds[0].text.tidy,
+      name:         tds[1].text.tidy,
       constituency: tds[2].text.tidy.split('-').first,
-      website: tds[3].xpath('a/@href').text,
-      photograph: tds[3].xpath('a/img/@src').text,
-      party: tds[4].text.tidy,
-      term: 10,
-      source: url.to_s,
+      website:      tds[3].xpath('a/@href').text,
+      photograph:   tds[3].xpath('a/img/@src').text,
+      party:        tds[4].text.tidy,
+      term:         10,
+      source:       url.to_s,
     }
     data[:id] = tds[3].xpath('.//img/@src').text.split('/').last.split('.').first rescue ''
     data[:photograph] = URI.join(url, URI.escape(data[:photograph])).to_s unless data[:photograph].to_s.empty?
     data[:website] = URI.join(url, URI.escape(data[:website])).to_s unless data[:website].to_s.empty?
     added += 1
     # puts data
-    ScraperWiki.save_sqlite([:seatid, :name], data)
+    ScraperWiki.save_sqlite(%i(seatid name), data)
   end
   warn "Added #{added} members"
 end
