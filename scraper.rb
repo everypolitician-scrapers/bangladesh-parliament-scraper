@@ -22,7 +22,7 @@ end
 
 class MemberRow < Scraped::HTML
   field :id do
-    File.basename(photograph, '.jpg')
+    File.basename(photograph, '.jpg').gsub('%20', '')
   end
 
   field :seatid do
