@@ -58,7 +58,7 @@ class MemberRow < Scraped::HTML
   end
 
   def vacant?
-    name.downcase.include?('vacant') || constituency.downcase.include?('vacant')
+    name.downcase.include?('vacant') || party.downcase.include?('vacant')
   end
 
   private
