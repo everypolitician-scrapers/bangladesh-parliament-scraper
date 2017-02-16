@@ -23,54 +23,6 @@ class MembersPage < Scraped::HTML
   end
 end
 
-class MemberRow < Scraped::HTML
-  field :id do
-    File.basename(photograph, '.jpg').gsub('%20', '')
-  end
-
-  field :seatid do
-    tds[0].text.tidy
-  end
-
-  field :name do
-    tds[1].text.tidy
-  end
-
-  field :constituency do
-    tds[2].text.tidy.split('-').first
-  end
-
-  field :website do
-    tds[3].xpath('a/@href').text
-  end
-
-  field :photograph do
-    tds[3].xpath('a/img/@src').text
-  end
-
-  field :party do
-    tds[4].text.tidy
-  end
-
-  field :term do
-    10
-  end
-
-  field :source do
-    url.to_s
-  end
-
-  def vacant?
-    name.downcase.include?('vacant') || party.downcase.include?('vacant')
-  end
-
-  private
-
-  def tds
-    noko.xpath('td')
-  end
-end
-
 start = 'http://www.parliament.gov.bd/index.php/en/mps/members-of-parliament/current-mp-s/list-of-10th-parliament-members-english'
 data = MembersPage.new(response: Scraped::Request.new(url: start).response).members.reject(&:vacant?).map(&:to_h)
 # data.each { |r| puts r.reject { |k, v| v.to_s.empty? }.sort_by { |k, v| k }.to_h }
