@@ -1,5 +1,8 @@
+sudo: false
 language: ruby
+cache: bundler
 rvm:
   - 2.3.3
-sudo: false
-cache: bundler
+script:
+  - bundle exec rake
+  - bash <(curl -fsSL https://github.com/everypolitician/ensure-regression-tests/raw/v0.1.0/ensure-regression-tests)
