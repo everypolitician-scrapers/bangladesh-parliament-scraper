@@ -17,6 +17,6 @@ start = 'http://www.parliament.gov.bd/index.php/en/mps/members-of-parliament/cur
 data = MembersPage.new(response: Scraped::Request.new(url: start).response).members.reject(&:vacant?).map(&:to_h)
 # data.each { |r| puts r.reject { |k, v| v.to_s.empty? }.sort_by { |k, v| k }.to_h }
 
-ScraperWiki.sqliteexecute('DELETE FROM data') rescue nil
+ScraperWiki.sqliteexecute('DROP TABLE data') rescue nil
 ScraperWiki.save_sqlite(%i[seatid name], data)
 warn "Added #{data.count} members"
