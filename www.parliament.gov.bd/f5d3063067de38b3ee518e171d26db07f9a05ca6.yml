@@ -18,16 +18,16 @@ response:
     message: OK
   headers:
     Date:
-    - Thu, 18 Jan 2018 23:27:01 GMT
+    - Fri, 19 Jan 2018 21:25:51 GMT
     Server:
     - Apache/2.2.15 (Red Hat)
     X-Powered-By:
     - PHP/5.3.3
     Set-Cookie:
-    - 1c01e9c3d01e97cc9eb5dcce9efe40f8=bp68qa6ndgq8kfrfd77f316m71; path=/
-    - jfcookie=deleted; expires=Wed, 18-Jan-2017 23:27:00 GMT; path=/
-    - jfcookie[lang]=en; expires=Fri, 19-Jan-2018 23:27:01 GMT; path=/
-    - lang=deleted; expires=Wed, 18-Jan-2017 23:27:00 GMT; path=/
+    - 1c01e9c3d01e97cc9eb5dcce9efe40f8=nk6sufn238altc3jcvf3jebj97; path=/
+    - jfcookie=deleted; expires=Thu, 19-Jan-2017 21:25:50 GMT; path=/
+    - jfcookie[lang]=en; expires=Sat, 20-Jan-2018 21:25:51 GMT; path=/
+    - lang=deleted; expires=Thu, 19-Jan-2017 21:25:50 GMT; path=/
     P3p:
     - CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"
     Cache-Control:
@@ -43,4 +43,4 @@ response:
   body:
     encoding: ASCII-8BIT
   http_version: 
-recorded_at: Fri, 19 Jan 2018 05:57:56 GMT
+recorded_at: Sat, 20 Jan 2018 03:56:47 GMT
