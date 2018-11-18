@@ -16,7 +16,7 @@ class MemberRow < Scraped::HTML
   end
 
   field :constituency do
-    tds[2].text.tidy.split('-').first
+    tds[2].text.tidy
   end
 
   field :website do
