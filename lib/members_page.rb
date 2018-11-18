@@ -4,7 +4,7 @@ require 'scraped'
 require_relative 'member_row'
 
 class MembersPage < Scraped::HTML
-  decorator Scraped::Response::Decorator::AbsoluteUrls
+  decorator Scraped::Response::Decorator::CleanUrls
 
   field :members do
     noko.xpath('//table//tr').drop(1).map do |tr|
