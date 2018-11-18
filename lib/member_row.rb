@@ -24,7 +24,7 @@ class MemberRow < Scraped::HTML
   end
 
   field :photograph do
-    tds[3].xpath('a/img/@src').text
+    tds[3].css('img[src^="http"]/@src').text
   end
 
   field :party do
