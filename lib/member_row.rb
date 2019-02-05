@@ -4,7 +4,8 @@ require 'scraped'
 
 class MemberRow < Scraped::HTML
   field :id do
-    File.basename(photograph, '.jpg').gsub('%20', '')
+    return seatid unless photograph
+    File.basename(photograph, '.jpg').gsub('%20', '') rescue binding.pry
   end
 
   field :seatid do
@@ -19,12 +20,8 @@ class MemberRow < Scraped::HTML
     tds[2].text.tidy
   end
 
-  field :website do
-    tds[3].xpath('a/@href').text
-  end
-
   field :photograph do
-    tds[3].css('img[src^="http"]/@src').text
+    tds[3].css('img[src^="http"]/@src').text.split(/http:\/+/).last&.prepend('http://')
   end
 
   field :party do
@@ -32,11 +29,11 @@ class MemberRow < Scraped::HTML
   end
 
   field :term do
-    10
+    noko.xpath('preceding::h2').first.text.tidy[/(\d+)/, 1].to_i
   end
 
   field :source do
-    url.to_s
+    url.to_s.split(/http:\/+/).last.prepend('http://')
   end
 
   def vacant?
